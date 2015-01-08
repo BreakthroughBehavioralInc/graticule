@@ -114,8 +114,11 @@ module Graticule #:nodoc:
         )
       end
 
-      # Extracts and raises any errors in +xml+
-      def check_error(xml) #:nodoc
+      # raises any errors
+      def check_error(response)
+        if response.result.locations.addresses.blank?
+          raise AddressError, 'unknown address'
+        end
       end
 
     end

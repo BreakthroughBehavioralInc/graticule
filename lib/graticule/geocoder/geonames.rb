@@ -3,13 +3,12 @@ module Graticule #:nodoc:
   module Geocoder #:nodoc:
     class Geonames < Base
 
-      def initialize(username = nil)
+      def initialize
         @url = URI.parse 'http://ws.geonames.org/timezone'
-        @username = username
       end
 
       def time_zone(location)
-        get :formatted => 'true', :style => 'full', :lat => location.latitude, :lng => location.longitude, :username => @username
+        get :formatted => 'true', :style => 'full', :lat => location.latitude, :lng => location.longitude
       end
 
     private

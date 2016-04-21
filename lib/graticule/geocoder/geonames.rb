@@ -4,7 +4,7 @@ module Graticule #:nodoc:
     class Geonames < Base
 
       def initialize(username = nil)
-        @url = URI.parse 'http://ws.geonames.org/timezone'
+        @url = URI.parse 'http://api.geonames.org/timezone'
         @username = username
       end
 

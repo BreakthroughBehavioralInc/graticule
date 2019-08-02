@@ -22,7 +22,7 @@ module Graticule #:nodoc:
 
       # Locates +address+ returning a Location
       def locate(address)
-        get :address => address.is_a?(String) ? address : location_from_params(address).to_s
+        get :address => address.is_a?(String) ? address : location_from_params(address).to_s, :key => @key
       end
 
     private
@@ -139,7 +139,7 @@ module Graticule #:nodoc:
       # the url as required by v3 of the library:
       #
       # https://developers.google.com/maps/documentation/business/webservices#digital_signatures
-      # 
+      #
       def make_url(params) #:nodoc:
         if @key && @client_id
           url = super params.merge(:sensor => false, :client => @client_id)
